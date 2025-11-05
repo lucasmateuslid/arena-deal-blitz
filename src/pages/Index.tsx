@@ -15,16 +15,20 @@ const QuoteModal = lazy(() => import("@/components/QuoteModal").then(m => ({ def
 const Index = () => {
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   
-  // ⚠️ IMPORTANTE: Substitua pelo seu número real (código do país + número, sem + ou hífens)
-  const PHONE = '5599999999999';
-  const GROUP_MESSAGE = 'Olá! Quero entrar no grupo VIP de ofertas da Arena Repasses.';
+  // Link do Canal/Grupo VIP do WhatsApp
+  const VIP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb6nvHz1HspvY1SrS91F';
+  const PHONE = '5599999999999'; // Para cotações individuais
 
   const openWhatsApp = (isGroup = true) => {
-    const message = isGroup 
-      ? GROUP_MESSAGE 
-      : 'Olá! Gostaria de falar com o time da Arena Repasses sobre as ofertas.';
-    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank', 'noopener');
+    if (isGroup) {
+      // Abre o canal VIP diretamente
+      window.open(VIP_CHANNEL_URL, '_blank', 'noopener');
+    } else {
+      // Mensagem para cotação individual
+      const message = 'Olá! Gostaria de falar com o time da Arena Repasses sobre as ofertas.';
+      const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank', 'noopener');
+    }
   };
 
   const handleQuoteSubmit = (model: string) => {
