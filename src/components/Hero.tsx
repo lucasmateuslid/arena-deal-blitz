@@ -31,7 +31,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
 
         {/* Subheadline */}
         <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto font-medium px-4">
-          Mais de <span className="text-primary font-black">1.000+ motoristas</span> já economizaram até <span className="text-accent font-black">40%</span> comprando conosco. Entre no grupo VIP agora.
+          Mais de <span className="text-primary font-black">990+ motoristas</span> já economizaram até <span className="text-accent font-black">40%</span> comprando conosco. Entre no grupo VIP agora.
         </p>
 
         {/* CTAs */}
@@ -56,20 +56,20 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-8 sm:pt-12 px-4">
           <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
-            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">1K+</div>
+            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">900+</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Clientes</div>
           </div>
           <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
-            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">50+</div>
+            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">20+</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Ofertas/Dia</div>
           </div>
           <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
-            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">40%</div>
+            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">Até 40%</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Economia</div>
           </div>
           <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
-            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">24/7</div>
-            <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Suporte</div>
+            <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">Todo dia</div>
+            <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Carros Novos</div>
           </div>
         </div>
 

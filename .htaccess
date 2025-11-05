@@ -1,0 +1,26 @@
+# Ativa o mod_rewrite
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Força HTTPS (caso o certificado SSL já esteja ativo)
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Se o arquivo ou diretório não existir, redireciona para index.html
+  # Isso garante que o React Router controle as rotas e exiba a página correta (incluindo a NotFound)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Garante que arquivos estáticos sejam servidos corretamente
+<IfModule mod_headers.c>
+  # Cache control para otimizar desempenho
+  <FilesMatch "\.(js|css|jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+</IfModule>
+
+# Impede listagem de diretórios
+Options -Indexes

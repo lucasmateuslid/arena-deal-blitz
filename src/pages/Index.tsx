@@ -17,7 +17,7 @@ const Index = () => {
   
   // Link do Canal/Grupo VIP do WhatsApp
   const VIP_CHANNEL_URL = 'https://whatsapp.com/channel/0029Vb6nvHz1HspvY1SrS91F';
-  const PHONE = '5599999999999'; // Para cotações individuais
+  const PHONE = '5584996850030'; // Para cotações individuais
 
   const openWhatsApp = (isGroup = true) => {
     if (isGroup) {

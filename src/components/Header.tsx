@@ -12,9 +12,9 @@ export const Header = ({ onOpenWhatsApp }: HeaderProps) => {
           {/* Logo Left */}
           <div className="flex items-center gap-2 flex-shrink-0">
             <img 
-              src="/placeholder.svg" 
-              alt="Arena Repasses Logo" 
-              className="w-9 h-9 sm:w-12 sm:h-12 object-contain"
+              src="https://arenaautonatal.com.br/wp-content/uploads/2025/06/IMG_9166-1-Photoroom.png" 
+              alt="Arena Repasse Logo" 
+              className="h-9 sm:w-48 sm:h-12 object-contain"
             />
           </div>
 
@@ -22,7 +22,7 @@ export const Header = ({ onOpenWhatsApp }: HeaderProps) => {
           <div className="hidden sm:flex justify-center">
             <span className="font-black text-lg sm:text-2xl tracking-tighter text-center whitespace-nowrap">
               <span className="gradient-text">ARENA</span>
-              <span className="text-foreground"> REPASSES</span>
+              <span className="text-foreground"> REPASSE</span>
             </span>
           </div>
 
