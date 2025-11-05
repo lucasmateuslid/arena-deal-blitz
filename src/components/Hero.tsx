@@ -38,7 +38,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
           <Button 
             size="lg"
             onClick={onOpenWhatsApp}
-            className="bg-gradient-fire hover:opacity-90 text-black font-black text-base uppercase tracking-wide px-8 py-7 glow-intense shadow-fire hover:scale-105 transition-all"
+            className="bg-gradient-fire text-black font-black text-base uppercase tracking-wide px-8 py-7 glow-intense animate-cta"
           >
             💬 ENTRAR NO GRUPO VIP AGORA
           </Button>
@@ -46,7 +46,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
             size="lg"
             variant="outline"
             onClick={onOpenQuote}
-            className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-black text-base uppercase tracking-wide px-8 py-7"
+            className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-black text-base uppercase tracking-wide px-8 py-7 transition-all hover:scale-105"
           >
             📋 COTAR MEU CARRO
           </Button>

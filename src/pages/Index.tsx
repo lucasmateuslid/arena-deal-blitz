@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Benefits } from "@/components/Benefits";
-import { Urgency } from "@/components/Urgency";
-import { Testimonials } from "@/components/Testimonials";
-import { FinalCTA } from "@/components/FinalCTA";
-import { Footer } from "@/components/Footer";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { QuoteModal } from "@/components/QuoteModal";
 import { Helmet } from "react-helmet";
+
+// Lazy load components não críticos
+const Benefits = lazy(() => import("@/components/Benefits").then(m => ({ default: m.Benefits })));
+const Urgency = lazy(() => import("@/components/Urgency").then(m => ({ default: m.Urgency })));
+const Testimonials = lazy(() => import("@/components/Testimonials").then(m => ({ default: m.Testimonials })));
+const FinalCTA = lazy(() => import("@/components/FinalCTA").then(m => ({ default: m.FinalCTA })));
+const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
+const FloatingWhatsApp = lazy(() => import("@/components/FloatingWhatsApp").then(m => ({ default: m.FloatingWhatsApp })));
+const QuoteModal = lazy(() => import("@/components/QuoteModal").then(m => ({ default: m.QuoteModal })));
 
 const Index = () => {
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
@@ -62,24 +64,26 @@ const Index = () => {
             onOpenWhatsApp={() => openWhatsApp(true)} 
             onOpenQuote={() => setQuoteModalOpen(true)}
           />
-          <Benefits />
-          <Urgency onOpenWhatsApp={() => openWhatsApp(true)} />
-          <Testimonials />
-          <FinalCTA onOpenWhatsApp={() => openWhatsApp(true)} />
+          
+          <Suspense fallback={<div className="min-h-[200px]" />}>
+            <Benefits />
+            <Urgency onOpenWhatsApp={() => openWhatsApp(true)} />
+            <Testimonials />
+            <FinalCTA onOpenWhatsApp={() => openWhatsApp(true)} />
+            <Footer onOpenWhatsApp={() => openWhatsApp(true)} />
+            
+            <FloatingWhatsApp 
+              onOpenWhatsApp={() => openWhatsApp(true)}
+              onOpenQuote={() => setQuoteModalOpen(true)}
+            />
+
+            <QuoteModal 
+              open={quoteModalOpen}
+              onClose={() => setQuoteModalOpen(false)}
+              onSubmit={handleQuoteSubmit}
+            />
+          </Suspense>
         </main>
-
-        <Footer onOpenWhatsApp={() => openWhatsApp(true)} />
-
-        <FloatingWhatsApp 
-          onOpenWhatsApp={() => openWhatsApp(true)}
-          onOpenQuote={() => setQuoteModalOpen(true)}
-        />
-
-        <QuoteModal 
-          open={quoteModalOpen}
-          onClose={() => setQuoteModalOpen(false)}
-          onSubmit={handleQuoteSubmit}
-        />
       </div>
     </>
   );

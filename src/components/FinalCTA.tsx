@@ -23,7 +23,7 @@ export const FinalCTA = ({ onOpenWhatsApp }: FinalCTAProps) => {
           <Button 
             size="lg"
             onClick={onOpenWhatsApp}
-            className="bg-gradient-fire hover:opacity-90 text-black font-black text-lg uppercase tracking-wide px-12 py-8 glow-intense shadow-fire hover:scale-105 transition-all"
+            className="bg-gradient-fire text-black font-black text-lg uppercase tracking-wide px-12 py-8 glow-intense animate-cta"
           >
             🚀 ENTRAR NO GRUPO VIP GRATUITAMENTE
           </Button>

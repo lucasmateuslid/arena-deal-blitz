@@ -1,25 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useUrgencyCounter } from "@/hooks/useUrgencyCounter";
 
 interface UrgencyProps {
   onOpenWhatsApp: () => void;
 }
 
 export const Urgency = ({ onOpenWhatsApp }: UrgencyProps) => {
-  const [spots, setSpots] = useState(47);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSpots(prev => {
-        if (prev > 5 && Math.random() < 0.35) {
-          return Math.max(3, prev - Math.floor(Math.random() * 3) - 1);
-        }
-        return prev;
-      });
-    }, 8000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const spots = useUrgencyCounter();
 
   return (
     <section className="py-16 px-4">
@@ -57,7 +44,7 @@ export const Urgency = ({ onOpenWhatsApp }: UrgencyProps) => {
             <Button 
               size="lg"
               onClick={onOpenWhatsApp}
-              className="bg-gradient-fire hover:opacity-90 text-black font-black text-base uppercase tracking-wide px-10 py-7 glow-intense shadow-fire hover:scale-105 transition-all"
+              className="bg-gradient-fire text-black font-black text-base uppercase tracking-wide px-10 py-7 glow-intense animate-cta"
             >
               🚀 GARANTIR MINHA VAGA AGORA
             </Button>
