@@ -15,37 +15,37 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3">
       {/* Message Bubble */}
       {showMessage && (
         <div className="hidden sm:block glass px-4 py-2 rounded-full border border-border animate-slide-up shadow-intense">
           <p className="text-sm font-bold text-foreground whitespace-nowrap">
-            🔥 Precisa de ajuda? Fale conosco!
+            🔥 Precisa de ajuda?
           </p>
         </div>
       )}
 
       {/* Buttons */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2 sm:gap-3">
         {/* Quote Button */}
         <Button
           size="icon"
           variant="outline"
           onClick={onOpenQuote}
-          className="h-14 w-14 rounded-full border-2 border-primary hover:bg-primary hover:text-white shadow-fire"
+          className="h-12 w-12 sm:h-14 sm:w-14 rounded-full border-2 border-primary hover:bg-primary hover:text-white shadow-fire transition-all hover:scale-110"
           title="Cotar agora"
         >
-          <span className="text-2xl">📋</span>
+          <span className="text-xl sm:text-2xl">📋</span>
         </Button>
 
         {/* WhatsApp Button */}
         <Button
           size="icon"
           onClick={onOpenWhatsApp}
-          className="h-16 w-16 rounded-full bg-gradient-fire hover:opacity-90 text-black shadow-fire glow-intense animate-pulse-glow"
+          className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-fire hover:opacity-90 text-black shadow-fire glow-intense animate-pulse-glow transition-all hover:scale-110"
           title="Abrir WhatsApp"
         >
-          <span className="text-3xl">💬</span>
+          <span className="text-2xl sm:text-3xl">💬</span>
         </Button>
       </div>
     </div>

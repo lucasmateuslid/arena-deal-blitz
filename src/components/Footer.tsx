@@ -6,51 +6,37 @@ export const Footer = ({ onOpenWhatsApp }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border py-12 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center space-y-4">
+    <footer className="border-t border-border bg-card/50 mt-12 sm:mt-16">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
+        <div className="text-center space-y-4 sm:space-y-6">
           {/* Logo */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-3xl">🚗</span>
-            <span className="font-black text-2xl tracking-tighter">
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-2xl sm:text-3xl">🚗</span>
+            <span className="font-black text-lg sm:text-xl tracking-tighter">
               <span className="gradient-text">ARENA</span>
               <span className="text-foreground"> REPASSES</span>
             </span>
           </div>
 
           {/* Description */}
-          <p className="text-muted-foreground max-w-md mx-auto">
-            Conectando você aos <span className="text-primary font-bold">preços mais agressivos</span> do mercado de carros.
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto px-4">
+            Conectando você aos melhores preços em carros de repasse. Economia real, ofertas verificadas.
           </p>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <a 
-              href="#benefits" 
-              className="text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Benefícios
-            </a>
-            <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); onOpenWhatsApp(); }}
-              className="text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
+            <button onClick={onOpenWhatsApp} className="text-primary hover:text-primary-foreground transition-colors font-bold">
+              Grupo VIP
+            </button>
+            <button onClick={onOpenWhatsApp} className="text-primary hover:text-primary-foreground transition-colors font-bold">
               WhatsApp
-            </a>
-            <a 
-              href="#" 
-              onClick={(e) => { e.preventDefault(); onOpenWhatsApp(); }}
-              className="text-muted-foreground hover:text-primary transition-colors font-medium"
-            >
-              Contato
-            </a>
+            </button>
           </div>
 
           {/* Copyright */}
-          <div className="pt-8 border-t border-border">
-            <p className="text-sm text-muted-foreground">
-              <span className="font-bold text-foreground">Arena Repasses</span> © {currentYear} — Todos os direitos reservados
+          <div className="pt-4 sm:pt-6 border-t border-border">
+            <p className="text-xs text-muted-foreground">
+              © {currentYear} <span className="font-bold text-primary">Arena Repasses</span> — Todos os direitos reservados
             </p>
           </div>
         </div>
