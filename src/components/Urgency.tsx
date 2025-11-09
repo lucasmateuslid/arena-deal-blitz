@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useUrgencyCounter } from "@/hooks/useUrgencyCounter";
+import { Clock, Flame, Rocket, Zap } from "lucide-react";
 
 interface UrgencyProps {
   onOpenWhatsApp: () => void;
@@ -19,7 +20,8 @@ export const Urgency = ({ onOpenWhatsApp }: UrgencyProps) => {
           <div className="relative z-10 text-center space-y-4 sm:space-y-6">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary text-white rounded-full font-black text-xs uppercase animate-pulse-glow">
-              ⏰ ALERTA DE URGÊNCIA
+              <Clock className="w-4 h-4" />
+              ALERTA DE URGÊNCIA
             </div>
 
             {/* Main Message */}
@@ -34,7 +36,7 @@ export const Urgency = ({ onOpenWhatsApp }: UrgencyProps) => {
             {/* Countdown */}
             <div className="py-3 sm:py-4">
               <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 bg-background rounded-full border border-border">
-                <span className="text-xl sm:text-2xl animate-bounce">🔥</span>
+                <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-primary animate-bounce" />
                 <span className="text-xl sm:text-2xl font-black text-highlight">{spots}</span>
                 <span className="text-muted-foreground uppercase tracking-wide text-xs sm:text-sm">vagas restantes</span>
               </div>
@@ -44,14 +46,16 @@ export const Urgency = ({ onOpenWhatsApp }: UrgencyProps) => {
             <Button 
               size="lg"
               onClick={onOpenWhatsApp}
-              className="w-full sm:w-auto bg-gradient-fire text-black font-black text-sm sm:text-base uppercase tracking-wide px-8 sm:px-10 py-6 sm:py-7 glow-intense animate-cta"
+              className="w-full sm:w-auto bg-gradient-fire text-black font-black text-sm sm:text-base uppercase tracking-wide px-8 sm:px-10 py-6 sm:py-7 glow-intense animate-cta flex items-center gap-2"
             >
-              🚀 GARANTIR MINHA VAGA
+              <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />
+              GARANTIR MINHA VAGA
             </Button>
 
             {/* Additional Urgency */}
-            <p className="text-xs sm:text-sm text-muted-foreground">
-              ⚡ Últimas 24h: <span className="text-primary font-bold">87 pessoas</span> entraram no grupo
+            <p className="text-xs sm:text-sm text-muted-foreground flex items-center justify-center gap-1.5">
+              <Zap className="w-4 h-4 text-primary" />
+              Últimas 24h: <span className="text-primary font-bold">87 pessoas</span> entraram no grupo
             </p>
           </div>
         </div>

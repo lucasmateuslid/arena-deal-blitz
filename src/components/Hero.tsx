@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Flame, MessageCircle, ClipboardList } from "lucide-react";
 
 interface HeroProps {
   onOpenWhatsApp: () => void;
@@ -17,7 +18,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-5 sm:space-y-8 animate-slide-up">
         {/* Badge */}
         <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-fire rounded-full font-black text-xs sm:text-sm uppercase tracking-wider text-black">
-          <span className="animate-bounce text-sm sm:text-base">🔥</span>
+          <Flame className="w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
           <span className="hidden xs:inline">OFERTAS EXPLOSIVAS DIÁRIAS</span>
           <span className="xs:hidden">OFERTAS DIÁRIAS</span>
         </div>
@@ -39,17 +40,19 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
           <Button 
             size="lg"
             onClick={onOpenWhatsApp}
-            className="w-full sm:w-auto bg-gradient-fire text-black font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 glow-intense animate-cta"
+            className="w-full sm:w-auto bg-gradient-fire text-black font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 glow-intense animate-cta flex items-center gap-2"
           >
-            💬 ENTRAR NO GRUPO VIP
+            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
+            ENTRAR NO GRUPO VIP
           </Button>
           <Button 
             size="lg"
             variant="outline"
             onClick={onOpenQuote}
-            className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 transition-all hover:scale-105"
+            className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 transition-all hover:scale-105 flex items-center gap-2"
           >
-            📋 COTAR MEU CARRO
+            <ClipboardList className="w-5 h-5 sm:w-6 sm:h-6" />
+            COTAR MEU CARRO
           </Button>
         </div>
 

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Smartphone } from "lucide-react";
 
 interface HeaderProps {
   onOpenWhatsApp: () => void;
@@ -39,9 +40,10 @@ export const Header = ({ onOpenWhatsApp }: HeaderProps) => {
             <Button
               size="sm"
               onClick={onOpenWhatsApp}
-              className="bg-gradient-fire hover:opacity-90 text-black font-black uppercase text-[10px] sm:text-xs px-3 sm:px-6 py-2 sm:py-2.5 animate-cta whitespace-nowrap"
+              className="bg-gradient-fire hover:opacity-90 text-black font-black uppercase text-[10px] sm:text-xs px-3 sm:px-6 py-2 sm:py-2.5 animate-cta whitespace-nowrap flex items-center gap-1.5"
             >
-              📱 Entrar Agora
+              <Smartphone className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              Entrar Agora
             </Button>
           </div>
         </div>

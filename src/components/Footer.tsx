@@ -1,3 +1,5 @@
+import { Car } from "lucide-react";
+
 interface FooterProps {
   onOpenWhatsApp: () => void;
 }
@@ -11,7 +13,7 @@ export const Footer = ({ onOpenWhatsApp }: FooterProps) => {
         <div className="text-center space-y-4 sm:space-y-6">
           {/* Logo */}
           <div className="flex items-center justify-center gap-2">
-            <span className="text-2xl sm:text-3xl">🚗</span>
+            <Car className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
             <span className="font-black text-lg sm:text-xl tracking-tighter">
               <span className="gradient-text">ARENA</span>
               <span className="text-foreground"> REPASSES</span>
