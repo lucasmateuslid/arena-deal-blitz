@@ -12,7 +12,7 @@ interface CarDeal {
   created_at: string;
 }
 
-export const SocialProof = () => {
+const SocialProof = () => {
   const [deals, setDeals] = useState<CarDeal[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -132,3 +132,5 @@ export const SocialProof = () => {
     </section>
   );
 };
+
+export default SocialProof;
