@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 // Lazy load components não críticos
 const Benefits = lazy(() => import("@/components/Benefits").then(m => ({ default: m.Benefits })));
 const Urgency = lazy(() => import("@/components/Urgency").then(m => ({ default: m.Urgency })));
+const SocialProof = lazy(() => import("@/components/SocialProof").then(m => ({ default: m.SocialProof })));
 const Testimonials = lazy(() => import("@/components/Testimonials").then(m => ({ default: m.Testimonials })));
 const FinalCTA = lazy(() => import("@/components/FinalCTA").then(m => ({ default: m.FinalCTA })));
 const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
@@ -72,6 +73,7 @@ const Index = () => {
           <Suspense fallback={<div className="min-h-[200px]" />}>
             <Benefits />
             <Urgency onOpenWhatsApp={() => openWhatsApp(true)} />
+            <SocialProof />
             <Testimonials />
             <FinalCTA onOpenWhatsApp={() => openWhatsApp(true)} />
             <Footer onOpenWhatsApp={() => openWhatsApp(true)} />
