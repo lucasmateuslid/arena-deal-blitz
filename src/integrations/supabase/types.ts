@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      button_clicks: {
+        Row: {
+          button_label: string | null
+          button_type: string
+          created_at: string
+          id: string
+          page_url: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          button_label?: string | null
+          button_type: string
+          created_at?: string
+          id?: string
+          page_url?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          button_label?: string | null
+          button_type?: string
+          created_at?: string
+          id?: string
+          page_url?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       car_deals: {
         Row: {
           created_at: string
@@ -40,6 +67,42 @@ export type Database = {
           preco_original?: number
           preco_venda?: number
           titulo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      quote_requests: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          mensagem: string | null
+          modelo_carro: string
+          nome: string | null
+          status: string
+          telefone: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          mensagem?: string | null
+          modelo_carro: string
+          nome?: string | null
+          status?: string
+          telefone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          mensagem?: string | null
+          modelo_carro?: string
+          nome?: string | null
+          status?: string
+          telefone?: string | null
           updated_at?: string
         }
         Relationships: []

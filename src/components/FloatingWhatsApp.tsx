@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Flame, ClipboardList, MessageCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface FloatingWhatsAppProps {
   onOpenWhatsApp: () => void;
@@ -14,6 +15,29 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
     const timer = setTimeout(() => setShowMessage(true), 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  const trackButtonClick = async (buttonType: string, buttonLabel: string) => {
+    try {
+      await supabase.from("button_clicks").insert({
+        button_type: buttonType,
+        button_label: buttonLabel,
+        page_url: window.location.href,
+        user_agent: navigator.userAgent,
+      });
+    } catch (error) {
+      console.error("Error tracking click:", error);
+    }
+  };
+
+  const handleWhatsAppClick = () => {
+    trackButtonClick("whatsapp", "Floating WhatsApp Button");
+    onOpenWhatsApp();
+  };
+
+  const handleQuoteClick = () => {
+    trackButtonClick("quote", "Floating Quote Button");
+    onOpenQuote();
+  };
 
   return (
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3">
@@ -33,7 +57,7 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
         <Button
           size="icon"
           variant="outline"
-          onClick={onOpenQuote}
+          onClick={handleQuoteClick}
           className="h-12 w-12 sm:h-14 sm:w-14 rounded-full border-2 border-primary hover:bg-primary hover:text-white shadow-fire transition-all hover:scale-110"
           title="Cotar agora"
         >
@@ -43,7 +67,7 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
         {/* WhatsApp Button */}
         <Button
           size="icon"
-          onClick={onOpenWhatsApp}
+          onClick={handleWhatsAppClick}
           className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-fire hover:opacity-90 text-white shadow-fire glow-intense animate-pulse-glow transition-all hover:scale-110"
           title="Abrir WhatsApp"
         >
