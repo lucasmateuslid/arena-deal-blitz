@@ -13,6 +13,14 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { MessageCircle } from "lucide-react";
+import { z } from "zod";
+
+const quoteSchema = z.object({
+  modelo_carro: z.string().trim().min(3, "Modelo deve ter no mínimo 3 caracteres").max(100, "Modelo muito longo"),
+  nome: z.string().trim().max(100, "Nome muito longo").optional(),
+  telefone: z.string().trim().max(20, "Telefone muito longo").optional(),
+  mensagem: z.string().trim().max(500, "Mensagem muito longa (máximo 500 caracteres)").optional(),
+});
 
 interface QuoteModalProps {
   open: boolean;
@@ -24,7 +32,6 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
   const [model, setModel] = useState("");
   const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -32,38 +39,45 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
     setModel("");
     setNome("");
     setTelefone("");
-    setEmail("");
     setMensagem("");
   };
 
   const handleSubmit = async () => {
-    if (!model.trim()) {
-      toast.error("Por favor, informe o modelo do carro");
+    // Validate input
+    const validation = quoteSchema.safeParse({
+      modelo_carro: model,
+      nome: nome || undefined,
+      telefone: telefone || undefined,
+      mensagem: mensagem || undefined,
+    });
+
+    if (!validation.success) {
+      const firstError = validation.error.errors[0];
+      toast.error(firstError.message);
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Save to database
+      // Save to database with validated data
       const { error } = await supabase
         .from("quote_requests")
         .insert({
-          modelo_carro: model,
-          nome: nome || null,
-          telefone: telefone || null,
-          email: email || null,
-          mensagem: mensagem || null,
+          modelo_carro: validation.data.modelo_carro,
+          nome: validation.data.nome || null,
+          telefone: validation.data.telefone || null,
+          mensagem: validation.data.mensagem || null,
+          email: null,
         });
 
       if (error) throw error;
 
       toast.success("Cotação enviada com sucesso!");
-      onSubmit(model);
+      onSubmit(validation.data.modelo_carro);
       resetForm();
       onClose();
     } catch (error) {
-      console.error("Error submitting quote:", error);
       toast.error("Erro ao enviar cotação. Tente novamente.");
     } finally {
       setIsSubmitting(false);
@@ -72,7 +86,7 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg bg-card border-border max-h-[90vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-md bg-card border-border max-h-[90vh] overflow-y-auto">
         <DialogHeader className="space-y-2">
           <DialogTitle className="text-xl sm:text-2xl font-black gradient-text">
             COTAR MEU CARRO
@@ -96,6 +110,7 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
               className="bg-background border-border text-foreground placeholder:text-muted-foreground"
               autoFocus
               required
+              maxLength={100}
             />
           </div>
 
@@ -110,6 +125,7 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
               value={nome}
               onChange={(e) => setNome(e.target.value)}
               className="bg-background border-border text-foreground placeholder:text-muted-foreground"
+              maxLength={100}
             />
           </div>
 
@@ -125,21 +141,7 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
               value={telefone}
               onChange={(e) => setTelefone(e.target.value)}
               className="bg-background border-border text-foreground placeholder:text-muted-foreground"
-            />
-          </div>
-
-          {/* Email - Opcional */}
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-foreground font-bold">
-              E-mail
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seuemail@exemplo.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-background border-border text-foreground placeholder:text-muted-foreground"
+              maxLength={20}
             />
           </div>
 
@@ -155,7 +157,13 @@ export const QuoteModal = ({ open, onClose, onSubmit }: QuoteModalProps) => {
               onChange={(e) => setMensagem(e.target.value)}
               className="bg-background border-border text-foreground placeholder:text-muted-foreground min-h-[80px] resize-none"
               rows={3}
+              maxLength={500}
             />
+            {mensagem.length > 0 && (
+              <p className="text-xs text-muted-foreground text-right">
+                {mensagem.length}/500
+              </p>
+            )}
           </div>
           
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
