@@ -44,7 +44,7 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
         <Button
           size="icon"
           onClick={onOpenWhatsApp}
-          className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-fire hover:opacity-90 text-black shadow-fire glow-intense animate-pulse-glow transition-all hover:scale-110"
+          className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-fire hover:opacity-90 text-white shadow-fire glow-intense animate-pulse-glow transition-all hover:scale-110"
           title="Abrir WhatsApp"
         >
           <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />

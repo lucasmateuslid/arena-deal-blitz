@@ -17,7 +17,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center space-y-5 sm:space-y-8 animate-slide-up">
         {/* Badge */}
-        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-fire rounded-full font-black text-xs sm:text-sm uppercase tracking-wider text-black">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-fire rounded-full font-black text-xs sm:text-sm uppercase tracking-wider text-white">
           <Flame className="w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
           <span className="hidden xs:inline">OFERTAS EXPLOSIVAS DIÁRIAS</span>
           <span className="xs:hidden">OFERTAS DIÁRIAS</span>
@@ -40,7 +40,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
           <Button 
             size="lg"
             onClick={onOpenWhatsApp}
-            className="w-full sm:w-auto bg-gradient-fire text-black font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 glow-intense animate-cta flex items-center gap-2"
+            className="w-full sm:w-auto bg-gradient-fire text-white font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 glow-intense animate-cta flex items-center gap-2"
           >
             <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 fill-current" />
             ENTRAR NO GRUPO VIP
@@ -58,19 +58,19 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
 
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-8 sm:pt-12 px-4">
-          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
+          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift text-center">
             <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">900+</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Clientes</div>
           </div>
-          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
+          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift text-center">
             <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">20+</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Ofertas/Dia</div>
           </div>
-          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
+          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift text-center">
             <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">Até 40%</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Economia</div>
           </div>
-          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift">
+          <div className="p-4 sm:p-6 rounded-xl bg-card border border-border hover-lift text-center">
             <div className="text-3xl sm:text-4xl font-black gradient-text mb-1">Todo dia</div>
             <div className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wide">Carros Novos</div>
           </div>
