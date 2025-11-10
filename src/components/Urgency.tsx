@@ -43,14 +43,16 @@ export const Urgency = ({ onOpenWhatsApp }: UrgencyProps) => {
             </div>
 
             {/* CTA */}
-            <Button 
-              size="lg"
-              onClick={onOpenWhatsApp}
-              className="w-full sm:w-auto bg-gradient-fire text-white font-black text-sm sm:text-base uppercase tracking-wide px-8 sm:px-10 py-6 sm:py-7 glow-intense animate-cta flex items-center gap-2"
-            >
-              <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />
-              GARANTIR MINHA VAGA
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                size="lg"
+                onClick={onOpenWhatsApp}
+                className="w-full sm:w-auto bg-gradient-fire text-white font-black text-sm sm:text-base uppercase tracking-wide px-8 sm:px-10 py-6 sm:py-7 glow-intense animate-cta flex items-center justify-center gap-2"
+              >
+                <Rocket className="w-5 h-5 sm:w-6 sm:h-6" />
+                GARANTIR MINHA VAGA
+              </Button>
+            </div>
 
             {/* Additional Urgency */}
             <p className="text-xs sm:text-sm text-muted-foreground flex items-center justify-center gap-1.5">
