@@ -47,7 +47,7 @@ export const Hero = ({ onOpenWhatsApp, onOpenQuote }: HeroProps) => {
           </Button>
           <Button 
             size="lg"
-            variant="outline"
+            variant="outline2"
             onClick={onOpenQuote}
             className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-white font-black text-sm sm:text-base uppercase tracking-wide px-6 sm:px-8 py-6 sm:py-7 transition-all hover:scale-105 flex items-center gap-2"
           >
