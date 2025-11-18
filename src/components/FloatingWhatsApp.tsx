@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-import { Flame, ClipboardList, MessageCircle } from "lucide-react";
+import { ClipboardList, X } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { supabase } from "@/integrations/supabase/client";
 
 interface FloatingWhatsAppProps {
@@ -12,9 +13,11 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
   const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowMessage(true), 3000);
+    const timer = setTimeout(() => setShowMessage(true), 5000);
     return () => clearTimeout(timer);
   }, []);
+
+  const closePreview = () => setShowMessage(false);
 
   const trackButtonClick = async (buttonType: string, buttonLabel: string) => {
     try {
@@ -31,6 +34,7 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
 
   const handleWhatsAppClick = () => {
     trackButtonClick("whatsapp", "Floating WhatsApp Button");
+    setShowMessage(false);
     onOpenWhatsApp();
   };
 
@@ -40,40 +44,82 @@ export const FloatingWhatsApp = ({ onOpenWhatsApp, onOpenQuote }: FloatingWhatsA
   };
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3">
-      {/* Message Bubble */}
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-3">
+
       {showMessage && (
-        <div className="hidden sm:flex items-center gap-2 glass px-4 py-2 rounded-full border border-border animate-slide-up shadow-intense">
-          <Flame className="w-4 h-4 text-primary animate-bounce" />
-          <p className="text-sm font-bold text-foreground whitespace-nowrap">
-            Precisa de ajuda?
-          </p>
+        <div
+          onClick={handleWhatsAppClick}
+          className="
+            relative max-w-[260px] sm:max-w-[300px]
+            bg-white p-3 pr-6 cursor-pointer
+            shadow-xl border border-neutral-200
+            rounded-2xl
+            animate-in fade-in slide-in-from-bottom-3
+            active:scale-95 transition-all
+            flex gap-3 items-start
+          "
+        >
+          <button
+            className="absolute top-2 right-2 text-neutral-400 hover:text-neutral-600 z-20"
+            onClick={(e) => {
+              e.stopPropagation();
+              closePreview();
+            }}
+          >
+            <X className="w-4 h-4" />
+          </button>
+
+          <div
+            className="
+              w-10 h-10 rounded-full bg-gradient-to-br
+              from-red-600 to-orange-500 text-white
+              flex items-center justify-center font-bold shadow-sm
+              shrink-0
+            "
+          >
+            Olá
+          </div>
+
+          <div className="flex flex-col leading-tight">
+            <p className="text-sm font-semibold text-neutral-800">estamos te aguardando</p>
+            <p className="text-xs sm:text-sm text-neutral-600">
+              Tá esperando o quê?
+              <br />
+              <span className="font-semibold text-red-600">
+                Conheça agora nossas ofertas!
+              </span>
+            </p>
+          </div>
+
+          {/* RABINHO DO BALÃO — apontando para o botão do WhatsApp */}
+          <div className="
+            absolute 
+            bottom-[-6px] right-4
+            w-3 h-3 bg-white 
+            border-b border-r border-neutral-200 
+            rotate-45
+          "></div>
         </div>
       )}
 
-      {/* Buttons */}
-      <div className="flex flex-col gap-2 sm:gap-3">
-        {/* Quote Button */}
-        <Button
-          size="icon"
-          variant="outline"
-          onClick={handleQuoteClick}
-          className="h-12 w-12 sm:h-14 sm:w-14 rounded-full border-2 border-primary hover:bg-primary hover:text-white shadow-fire transition-all hover:scale-110"
-          title="Cotar agora"
-        >
-          <ClipboardList className="w-5 h-5 sm:w-6 sm:h-6" />
-        </Button>
+      <div className="flex flex-col gap-3">
 
         {/* WhatsApp Button */}
         <Button
           size="icon"
           onClick={handleWhatsAppClick}
-          className="h-14 w-14 sm:h-16 sm:w-16 rounded-full bg-gradient-fire hover:opacity-90 text-white shadow-fire glow-intense animate-pulse-glow transition-all hover:scale-110"
+          className="
+            h-14 w-14 sm:h-16 sm:w-16 rounded-full 
+            bg-green-500 hover:bg-green-600 
+            text-white shadow-lg hover:shadow-2xl 
+            transition-all hover:scale-110 animate-pulse
+          "
           title="Abrir WhatsApp"
         >
-          <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-current" />
+          <FaWhatsapp className="w-7 h-7" />
         </Button>
       </div>
+
     </div>
   );
 };

@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -14,7 +19,7 @@ export default {
     },
     extend: {
       screens: {
-        'xs': '475px',
+        xs: "475px",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -56,15 +61,26 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+
+      /* ---------------------- ADICIONEI ESTES ---------------------- */
       backgroundImage: {
-        'gradient-fire': 'var(--gradient-fire)',
-        'gradient-dark': 'var(--gradient-dark)',
-        'gradient-card': 'var(--gradient-card)',
+        "gradient-fire": "var(--gradient-fire)",
+        "gradient-dark": "var(--gradient-dark)",
+        "gradient-card": "var(--gradient-card)",
+
+        // necessário para radial glow
+        "gradient-radial": "radial-gradient(circle at center, var(--tw-gradient-stops))",
+
+        // opcional (glow mais forte pré-configurado)
+        "glow-radial":
+          "radial-gradient(circle at center, rgba(255,125,0,0.35), transparent 70%)",
       },
+      /* --------------------------------------------------------------- */
+
       boxShadow: {
-        glow: 'var(--shadow-glow)',
-        intense: 'var(--shadow-intense)',
-        fire: 'var(--shadow-fire)',
+        glow: "var(--shadow-glow)",
+        intense: "var(--shadow-intense)",
+        fire: "var(--shadow-fire)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,20 +89,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
