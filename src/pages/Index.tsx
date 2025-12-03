@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet";
 
 // Lazy load components não críticos
 const Benefits = lazy(() => import("@/components/Benefits").then(m => ({ default: m.Benefits })));
+const ExclusiveAdvantages = lazy(() => import("@/components/ExclusiveAdvantages").then(m => ({ default: m.ExclusiveAdvantages })));
+const HowItWorks = lazy(() => import("@/components/HowItWorks").then(m => ({ default: m.HowItWorks })));
 const Urgency = lazy(() => import("@/components/Urgency").then(m => ({ default: m.Urgency })));
 const SocialProof = lazy(() => import("@/components/SocialProof"));
 const Testimonials = lazy(() => import("@/components/Testimonials").then(m => ({ default: m.Testimonials })));
@@ -72,6 +74,8 @@ const Index = () => {
           
           <Suspense fallback={<div className="min-h-[200px]" />}>
             <Benefits />
+            <ExclusiveAdvantages />
+            <HowItWorks onOpenWhatsApp={() => openWhatsApp(true)} />
             <Urgency onOpenWhatsApp={() => openWhatsApp(true)} />
             <SocialProof />
             <Testimonials />
